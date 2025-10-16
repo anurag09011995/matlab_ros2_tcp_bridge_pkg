@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+<robot name="mobile2_bot"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:property name="body_color" value="Gazebo/Silver" />
+
+  <!-- <gazebo>
+    <plugin name="control" filename="libgazebo_ros2_control.so"/>
+  </gazebo> -->
+
+  <gazebo>
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros>
+        <namespace>/</namespace>
+        <remapping>cmd_vel:=/cmd_vel</remapping>
+      </ros>
+      <update_rate>100</update_rate>
+      <left_joint>Revolute 2</left_joint>
+      <right_joint>Revolute 1</right_joint>
+      <wheel_separation>0.10</wheel_separation>
+      <wheel_diameter>0.05</wheel_diameter>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <command_topic>cmd_vel</command_topic>
+      <odometry_topic>odom</odometry_topic>
+      <publish_wheel_tf>false</publish_wheel_tf>
+      <command_timeout>1.0</command_timeout>
+      <max_wheel_torque>10.0</max_wheel_torque>
+      <max_wheel_acceleration>5.0</max_wheel_acceleration>
+    </plugin>
+  </gazebo>
+
+
+  <gazebo reference="base_link">
+    <material>${body_color}</material>
+    <mu1>0.1</mu1>
+    <mu2>0.1</mu2>
+    <kp>1e6</kp>
+    <kd>10.0</kd>
+    <self_collide>true</self_collide>
+    <gravity>true</gravity>
+  </gazebo>
+
+  <gazebo reference="right_wheel">
+    <material>${body_color}</material>
+    <mu1>1500</mu1>
+    <mu2>1500</mu2>
+    <self_collide>true</self_collide>
+  </gazebo>
+
+  <gazebo reference="left_wheel">
+    <material>${body_color}</material>
+    <mu1>1500</mu1>
+    <mu2>1500</mu2>
+    <self_collide>true</self_collide>
+  </gazebo>
+
+  <gazebo reference="lidar">
+    <material>${body_color}</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <self_collide>true</self_collide>
+  </gazebo>
+
+  <gazebo reference="${prefix}lidar">
+    <sensor type="ray" name="lidar_sensor">
+      <always_on>true</always_on>
+      <update_rate>10.0</update_rate>
+      <visualize>true</visualize>
+
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-1.5708</min_angle>            <!-- -90° -->
+            <max_angle>1.5708</max_angle>            <!-- +90° -->
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.12</min>
+          <max>12.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+
+      <plugin name="gazebo_ros_laser" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+          <namespace>/</namespace>
+          <remapping>~/out:=/scan</remapping>
+        </ros>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+
+
+</robot>
