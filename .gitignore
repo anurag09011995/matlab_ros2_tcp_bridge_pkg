@@ -1,0 +1,10 @@
+build/
+install/
+log/
+.ros/
+__pycache__/
+*.pyc
+*.mat
+*.asv
+.DS_Store
+
