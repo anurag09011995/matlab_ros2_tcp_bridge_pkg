@@ -10,10 +10,10 @@
 ## Project Overview
 
 This repository showcases a **cross-platform robotic system** built using **ROS 2 (Humble)**, **Gazebo Classic**, and **MATLAB**, running seamlessly between **WSL2 (Ubuntu)** and **Windows 11**.  
-The system enables real-time remote control of a simulated robot using MATLAB via a custom **TCP communication bridge** — without relying on ROS2 DDS.
+The system enables real-time remote control of a simulated robot using MATLAB via a custom **TCP communication bridge** without relying on ROS2 DDS.
 
 It demonstrates:
-- End-to-end robot development — from CAD to simulation.  
+- End-to-end robot development from CAD to simulation.  
 - Networked control and sensor data streaming across environments.  
 - Real-time MATLAB-driven actuation and telemetry in Gazebo.  
 
@@ -39,9 +39,9 @@ It demonstrates:
 
 4. **Control Phase (MATLAB Integration)**  
    - Developed MATLAB client scripts to connect, parse telemetry, and send velocity commands.  
-   - Validated real-time control — MATLAB commands caused movement in Gazebo.  
+   - Validated real-time control MATLAB commands caused movement in Gazebo.  
 
-*This demonstrates end-to-end control of a ROS2 robot simulation from MATLAB — proving networked robot operation across platforms.*
+*This demonstrates end-to-end control of a ROS2 robot simulation from MATLAB proving networked robot operation across platforms.*
 
 ---
 
@@ -207,7 +207,7 @@ Robot not moving | Global `t_cmd` empty | Run `connect_bridge.m` first
 **Repository Name:** `matlab_ros2_tcp_bridge_pkg`
 
 **Short Description:**  
-Cross-platform mobile robot simulation in ROS 2 + Gazebo + MATLAB — designed in Fusion 360, controlled over a custom TCP bridge for real-time telemetry and motion.
+Cross-platform mobile robot simulation in ROS 2 + Gazebo + MATLAB designed in Fusion 360, controlled over a custom TCP bridge for real-time telemetry and motion.
 
 **Topics:**  
 ros2, gazebo, matlab, robotics, tcp-communication, robot-simulation, wsl2, fusion360, urdf, lidar, automation, networked-robots, python, differential-drive, cad-to-simulation, cross-platform-integration, ai-robotics, digital-twin, control-systems
